@@ -6,27 +6,27 @@ if nargin < 2
     h = 2^-17;
 end
 
-[n, K]  = size(x);
-H       = [zeros(n,1) h*eye(n)];
+[n1, K1]  = size(x);
+H       = [zeros(n1,1) h*eye(n1)];
 H       = permute(H, [1 3 2]);
 X       = pp(x, H);
-X       = reshape(X, n, K*(n+1));
+X       = reshape(X, n1, K1*(n1+1));
 
-[n, K]  = size(X);
-H       = [zeros(n,1) h*eye(n)];
+[n2, K2]  = size(X);
+H       = [zeros(n2,1) h*eye(n2)];
 H       = permute(H, [1 3 2]);
 X       = pp(X, H);
-X       = reshape(X, n, K*(n+1));
+X       = reshape(X, n2, K2*(n2+1));
 
 Y       = pendulum_dynamics(X(1:2,:), X(3,:));
 
-m       = numel(Y)/(K*(n+1));
-Y       = reshape(Y, m, K, n+1);
+m       = numel(Y)/(K2*(n2+1));
+Y       = reshape(Y, m, K2, n2+1);
 J       = pp(Y(:,:,2:end), -Y(:,:,1)) / h;
 Y       = permute(J, [1 3 2]);
 
-m       = numel(Y)/(K*(n+1));
-Y       = reshape(Y, m, K, n+1);
+m       = numel(Y)/(K1*(n1+1));
+Y       = reshape(Y, m, K1, n1+1);
 J       = pp(Y(:,:,2:end), -Y(:,:,1)) / h;
 J       = permute(J, [1 3 2]);
 
