@@ -10,9 +10,9 @@ m        = size(u,1);
 N        = size(u,2);
 
 xnew        = zeros(n,K,N+1);
-xnew(:,:,501) = [0;0];
+%lxnew(:,:,501) = [0;0];
 %xnew(:,:,N+1) = 0;
-unew        = zeros(m,K,N+1);
+unew        = zeros(m,K,N);
 cnew        = zeros(1,K,N+1);
 
 for i = 1:N
@@ -32,8 +32,8 @@ for i = 1:N
     end
     
     if ~isempty(lims)
-        unew = randn(1,1,500);
-        %unew(:,:,i) = min(lims(:,2*K1), max(lims(:,1*K1), unew(:,:,i)));
+        %unew = randn(1,1,500);
+        unew(:,:,i) = min(lims(:,2*K1), max(lims(:,1*K1), unew(:,:,i)));
     end
 
     [xnew(:,:,i+1), cnew(:,:,i)] = pendulum_dyn_cst(xnew(:,:,i), unew(:,:,i), i*K1);
