@@ -1,10 +1,10 @@
-function [f,c,fx,fu,fxx,fxu,fuu,cx,cu,cxx,cxu,cuu] = pendulum_dyn_cst(x,u,full_DDP)
+function [f,c,fx,fu,fxx,fxu,fuu,cx,cu,cxx,cxu,cuu] = pendulum_dyn_cst(x,u,xn,full_DDP)
 % combine pendulum dynamics and cost
 % use helper function finite_difference() to compute derivatives
 
 if nargout == 2
     f = pendulum_dynamics(x,u);
-    c = pendulum_cost(x, u);
+    c = pendulum_cost(x, u, xn);
 else
     % state and control indices
     ix = 1:2;
@@ -46,13 +46,13 @@ else
 %     
     % cost first derivatives
     %xu_cost = @(xu) pendulum_cost(xu(ix,:),xu(iu,:));
-    J       = squeeze(finite_difference_pendulum_cost([x; u]));
+    J       = squeeze(finite_difference_pendulum_cost([x; u], xn));
     cx      = J(ix,:);
     cu      = J(iu,:);
     
     % cost second derivatives
     %xu_Jcst = @(xu) squeeze(finite_difference(xu_cost, xu));
-    JJ      = finite_finite_pendulum_cost([x; u]);
+    JJ      = finite_finite_pendulum_cost([x; u], xn);
     JJ      = 0.5*(JJ + permute(JJ,[2 1 3]));      %symmetrize
     cxx     = JJ(ix,ix,:);
     cxu     = JJ(ix,iu,:);

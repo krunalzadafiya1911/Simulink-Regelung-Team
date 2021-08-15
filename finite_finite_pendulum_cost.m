@@ -1,8 +1,8 @@
-function J = finite_finite_pendulum_cost(x, h)
+function J = finite_finite_pendulum_cost(x, xn, h)
 % simple finite-difference derivatives
 % assumes the function fun() is vectorized
 
-if nargin < 2
+if nargin < 3
     h = 2^-17;
 end
 
@@ -18,7 +18,7 @@ H       = permute(H, [1 3 2]);
 X       = pp(X, H);
 X       = reshape(X, n2, K2*(n2+1));
 
-Y       = pendulum_cost(X(1:2,:), X(3,:));
+Y       = pendulum_cost(X(1:2,:), X(3,:), xn);
 
 m       = numel(Y)/(K2*(n2+1));
 Y       = reshape(Y, m, K2, n2+1);

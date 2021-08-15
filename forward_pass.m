@@ -1,4 +1,4 @@
-function [xnew,unew,cnew] = forward_pass(x0,u,L,x,du,Alpha,lims,diff)
+function [xnew,unew,cnew] = forward_pass(x0,u,xn,L,x,du,Alpha,lims,diff)
 % parallel forward-pass (rollout)
 % internally time is on the 3rd dimension, 
 % to facillitate vectorized dynamics calls
@@ -10,8 +10,7 @@ m        = size(u,1);
 N        = size(u,2);
 
 xnew        = zeros(n,K,N+1);
-%lxnew(:,:,501) = [0;0];
-%xnew(:,:,N+1) = 0;
+xnew(:,:,1) = x0(:,ones(1,K));
 unew        = zeros(m,K,N);
 cnew        = zeros(1,K,N+1);
 
@@ -36,9 +35,9 @@ for i = 1:N
         unew(:,:,i) = min(lims(:,2*K1), max(lims(:,1*K1), unew(:,:,i)));
     end
 
-    [xnew(:,:,i+1), cnew(:,:,i)] = pendulum_dyn_cst(xnew(:,:,i), unew(:,:,i), i*K1);
+    [xnew(:,:,i+1), cnew(:,:,i)] = pendulum_dyn_cst(xnew(:,:,i), unew(:,:,i), xn, i*K1);
 end
-[~, cnew(:,:,N+1)] = pendulum_dyn_cst(xnew(:,:,N+1),nan(m,K,1),i);
+[~, cnew(:,:,N+1)] = pendulum_dyn_cst(xnew(:,:,N+1),nan(m,K,1),xn, i);
 % put the time dimension in the columns
 xnew = permute(xnew, [1 3 2]);
 unew = permute(unew, [1 3 2]);
