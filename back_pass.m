@@ -1,5 +1,5 @@
 function [diverge, Vx, Vxx, k, K, dV] = back_pass(cx,cu,cxx,cxu,cuu,fx,fu,fxx,fxu,fuu,lambda,regType,lims,u)
-% Perform the Ricatti-Mayne backward pass
+% Perform the Ricatti-Mayne backward pass 
 
 % tensor multiplication for DDP terms
 vectens = @(a,b) permute(sum(bsxfun(@times,a,b),1), [3 2 1]);
