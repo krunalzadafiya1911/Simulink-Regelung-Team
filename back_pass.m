@@ -1,7 +1,22 @@
 function [diverge, Vx, Vxx, k, K, dV] = back_pass(cx,cu,cxx,cxu,cuu,fx,fu,fxx,fxu,fuu,lambda,regType,lims,u)
-% Perform the Ricatti-Mayne backward pass 
+  %% back_pass: Perform the Ricatti-Mayne backward pass
+  % this function is written for back pass calculation.
+  
+  % this function estimate the change in state over the interation over all
+  % time steps.
+  
+  % back pass function takes derivative of cost and derivatives of states
+  % with respect to states and inputs.
 
-% tensor multiplication for DDP terms
+  % tensor multiplication for DDP terms
+  
+%% ******** Owner of Code ************************************************
+  % Krunalkumar, Zadafiya (TU Kaiserslautern)
+  %
+  % Author: zadafiya@rhrk.uni-kl.de
+  % **********************************************************************
+  % Begin initializataion code - DO NOT EDIT
+
 vectens = @(a,b) permute(sum(bsxfun(@times,a,b),1), [3 2 1]);
 
 N  = size(cx,2);
