@@ -2,7 +2,7 @@ function [diverge, Vx, Vxx, k, K, dV] = back_pass(cx,cu,cxx,cxu,cuu,fx,fu,fxx,fx
   %% back_pass: Perform the Ricatti-Mayne backward pass
   % this function is written for back pass calculation.
   
-  % this function estimate the change in state over the interation over all
+  % this function estimate the change in state over the interation for all
   % time steps.
   
   % back pass function takes derivative of cost and derivatives of states

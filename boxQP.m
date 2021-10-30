@@ -1,21 +1,22 @@
 function [x,result,Hfree,free,trace] = boxQP(H,g,lower,upper,x0,options)
-% Minimize 0.5*x'*H*x + x'*g  s.t. lower<=x<=upper
-%
-%  inputs:
-%     H            - positive definite matrix   (n * n)
-%     g            - bias vector                (n)
-%     lower        - lower bounds               (n)
-%     upper        - upper bounds               (n)
-%
-%   optional inputs:
-%     x0           - initial state              (n)
-%     options      - see below                  (7)
-%
-%  outputs:
-%     x            - solution                   (n)
-%     result       - result type (roughly, higher is better, see below)
-%     Hfree        - subspace cholesky factor   (n_free * n_free)
-%     free         - set of free dimensions     (n)
+  %% boxQP: Minimize 0.5*x'*H*x + x'*g  s.t. lower<=x<=upper
+  %
+  %  inputs:
+  %     H            - positive definite matrix   (n * n)
+  %     g            - bias vector                (n)
+  %     lower        - lower bounds               (n)
+  %     upper        - upper bounds               (n)
+  %
+  %   optional inputs:
+  %     x0           - initial state              (n)
+  %     options      - see below                  (7)
+  %
+  %  outputs:
+  %     x            - solution                   (n)
+  %     result       - result type (roughly, higher is better, see below)
+  %     Hfree        - subspace cholesky factor   (n_free * n_free)
+  %     free         - set of free dimensions     (n)
+  % Begin initializataion code - DO NOT EDIT
 
 if nargin==0
    demoQP(); % run the built-in demo

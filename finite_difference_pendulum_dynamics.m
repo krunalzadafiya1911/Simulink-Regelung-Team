@@ -1,7 +1,14 @@
 function J = finite_difference_pendulum_dynamics(x, h)
-% simple finite-difference derivatives
-% assumes the function fun() is vectorized
+%% finite_difference_pendulum_dynamics function: simple finite-difference derivatives
+  % assumes the function fun() is vectorized
 
+%% ******** Owner of Code ************************************************
+  % Krunalkumar, Zadafiya (TU Kaiserslautern)
+  %
+  % Author: zadafiya@rhrk.uni-kl.de
+  % **********************************************************************
+  % Begin initializataion code - DO NOT EDIT
+  
 if nargin < 2
     h = 2^-17;
 end

@@ -1,6 +1,17 @@
 function [f,c,fx,fu,fxx,fxu,fuu,cx,cu,cxx,cxu,cuu] = pendulum_dyn_cst(x,u,xn,full_DDP)
-% combine pendulum dynamics and cost
-% use helper function finite_difference() to compute derivatives
+%% pendulum_dyn_cst: combine pendulum dynamics and cost
+
+  % this function estimate the preducted state function and its derivatives,
+  % cost and input vector over the time step
+
+  % uses the finite_differences function
+  
+%% ******** Owner of Code ************************************************
+  % Krunalkumar, Zadafiya (TU Kaiserslautern)
+  %
+  % Author: zadafiya@rhrk.uni-kl.de
+  % **********************************************************************
+  % Begin initializataion code - DO NOT EDIT
 
 if nargout == 2
     f = pendulum_dynamics(x,u);

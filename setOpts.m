@@ -1,5 +1,11 @@
 function params = setOpts(defaults,options)
-
+%% setOpts: set parameters
+%% ******** Owner of Code ************************************************
+  % Krunalkumar, Zadafiya (TU Kaiserslautern)
+  %
+  % Author: zadafiya@rhrk.uni-kl.de
+  % **********************************************************************
+  % Begin initializataion code - DO NOT EDIT
 if nargin==1 || isempty(options)
     user_fields  = [];
 else

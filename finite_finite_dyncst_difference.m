@@ -1,6 +1,13 @@
 function J = finite_finite_dyncst_difference(x, h)
-% simple finite-difference derivatives
-% assumes the function fun() is vectorized
+%% finite_finite_dyncst_difference function: simple finite-difference derivatives
+  % assumes the function fun() is vectorized
+
+%% ******** Owner of Code ************************************************
+  % Krunalkumar, Zadafiya (TU Kaiserslautern)
+  %
+  % Author: zadafiya@rhrk.uni-kl.de
+  % **********************************************************************
+  % Begin initializataion code - DO NOT EDIT
 
 if nargin < 2
     h = 2^-17;

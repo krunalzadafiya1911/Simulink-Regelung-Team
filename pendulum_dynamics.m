@@ -1,8 +1,16 @@
 function y = pendulum_dynamics(x,u)
+%% pendulum_dynamics: calculate pendulum dynamics
+  
+  % === states and controls:
+  % x = [phi dphi]' = [angle; angular velocity]
+  % u = [F]'     = [force applied]
 
-% === states and controls:
-% x = [phi dphi]' = [angle; angular velocity]
-% u = [F]'     = [force applied]
+%% ******** Owner of Code ************************************************
+  % Krunalkumar, Zadafiya (TU Kaiserslautern)
+  %
+  % Author: zadafiya@rhrk.uni-kl.de
+  % **********************************************************************
+  % Begin initializataion code - DO NOT EDIT
 
 % constants
 l  = 0.5;      % l = length of pendulum

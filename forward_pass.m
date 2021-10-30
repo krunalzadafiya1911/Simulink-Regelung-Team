@@ -1,7 +1,19 @@
 function [xnew,unew,cnew] = forward_pass(x0,u,xn,L,x,du,Alpha,lims,diff)
-% parallel forward-pass (rollout)
-% internally time is on the 3rd dimension, 
-% to facillitate vectorized dynamics calls
+%% forward_pass: parallel forward-pass (rollout)
+  % this function is written for forward pass calculation.
+  
+  % this function estimate the preducted state, cost and input vector over
+  % the time step
+  
+  % internally time is on the 3rd dimension, 
+  % to facillitate vectorized dynamics calls
+  
+%% ******** Owner of Code ************************************************
+  % Krunalkumar, Zadafiya (TU Kaiserslautern)
+  %
+  % Author: zadafiya@rhrk.uni-kl.de
+  % **********************************************************************
+  % Begin initializataion code - DO NOT EDIT
 
 n        = size(x0,1);
 K        = length(Alpha);

@@ -1,6 +1,13 @@
 function J = finite_finite_pendulum_cost(x, xn, h)
-% simple finite-difference derivatives
-% assumes the function fun() is vectorized
+%% finite_finite_pendulum_cost function: simple finite-difference derivatives
+  % assumes the function fun() is vectorized
+
+%% ******** Owner of Code ************************************************
+  % Krunalkumar, Zadafiya (TU Kaiserslautern)
+  %
+  % Author: zadafiya@rhrk.uni-kl.de
+  % **********************************************************************
+  % Begin initializataion code - DO NOT EDIT
 
 if nargin < 3
     h = 2^-17;
